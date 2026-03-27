@@ -10,8 +10,8 @@ export function renderDashboard(container) {
 
     <!-- Hero header -->
 
-    <div class="page-header animate-fade-up" style="
-      background: linear-gradient(135deg, rgba(0,255,157,0.08) 0%, rgba(212,212,216,0.04) 50%, transparent 100%);
+    <div class="page-header animate-fade-up hero-animate-bg" style="
+      background: linear-gradient(135deg, rgba(0,255,157,0.12) 0%, rgba(212,212,216,0.06) 50%, transparent 100%);
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 20px;
       padding: 36px 40px;
@@ -20,13 +20,13 @@ export function renderDashboard(container) {
       overflow: hidden;
     ">
       <!-- decorative orbs -->
-      <div style="
+      <div class="animate-float" style="
         position:absolute; top:-40px; right:-40px;
         width:240px; height:240px;
         background: radial-gradient(circle, rgba(0,255,157,0.15), transparent 70%);
         border-radius:50%; pointer-events:none;
       "></div>
-      <div style="
+      <div class="animate-float-slow" style="
         position:absolute; bottom:-30px; right:120px;
         width:160px; height:160px;
         background: radial-gradient(circle, rgba(0,255,157,0.1), transparent 70%);
@@ -67,36 +67,44 @@ export function renderDashboard(container) {
     <!-- Stat Cards -->
     <div class="dashboard-grid" style="margin-bottom:32px;">
       <div class="glass-card stat-card animate-fade-up delay-1">
-        <div class="stat-icon blue">📊</div>
-        <div class="stat-content">
-        <h4 class="stat-num" data-target="16">0</h4>
-          <p>Interactive Modules</p>
+        <div class="stat-card-float" style="width:100%; height:100%; display:flex; gap:16px; align-items:center;">
+          <div class="stat-icon blue">📊</div>
+          <div class="stat-content">
+            <h4 class="stat-num" data-target="16">0</h4>
+            <p>Interactive Modules</p>
+          </div>
+          <div class="stat-trend up" style="margin-left:auto;">+2 new</div>
         </div>
-        <div class="stat-trend up">+2 new</div>
       </div>
 
       <div class="glass-card stat-card animate-fade-up delay-2">
-        <div class="stat-icon emerald">🌎</div>
-        <div class="stat-content">
-          <h4 class="stat-num" data-target="9">0</h4>
-          <p>Sample Datasets</p>
+        <div class="stat-card-float" style="width:100%; height:100%; display:flex; gap:16px; align-items:center;">
+          <div class="stat-icon emerald">🌎</div>
+          <div class="stat-content">
+            <h4 class="stat-num" data-target="9">0</h4>
+            <p>Sample Datasets</p>
+          </div>
+          <div class="stat-trend up" style="margin-left:auto;">+1 new</div>
         </div>
-        <div class="stat-trend up">+1 new</div>
       </div>
 
       <div class="glass-card stat-card animate-fade-up delay-3">
-        <div class="stat-icon amber">⚡</div>
-        <div class="stat-content">
-          <h4 style="font-size:1.4rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:4px;">Real-Time</h4>
-          <p>In-Browser Training</p>
+        <div class="stat-card-float" style="width:100%; height:100%; display:flex; gap:16px; align-items:center;">
+          <div class="stat-icon amber">⚡</div>
+          <div class="stat-content">
+            <h4 style="font-size:1.4rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:4px;">Real-Time</h4>
+            <p>In-Browser Training</p>
+          </div>
         </div>
       </div>
 
       <div class="glass-card stat-card animate-fade-up delay-4">
-        <div class="stat-icon violet">💡</div>
-        <div class="stat-content">
-          <h4 style="font-size:1.4rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:4px;">Visual</h4>
-          <p>Step-by-Step Explanations</p>
+        <div class="stat-card-float" style="width:100%; height:100%; display:flex; gap:16px; align-items:center;">
+          <div class="stat-icon violet">💡</div>
+          <div class="stat-content">
+            <h4 style="font-size:1.4rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:4px;">Visual</h4>
+            <p>Step-by-Step Explanations</p>
+          </div>
         </div>
       </div>
     </div>

@@ -2462,3 +2462,42 @@ select:focus {
   background: rgba(255,255,255,0.05) !important;
 }
 
+/* --- Moving Animations --- */
+@keyframes float {
+  0%   { transform: translate(0, 0); }
+  33%  { transform: translate(5px, -12px); }
+  66%  { transform: translate(-8px, -5px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes float-alt {
+  0%   { transform: translate(0, 0); }
+  50%  { transform: translate(-10px, 10px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes bg-shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-float {
+  animation: float 8s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-alt 12s ease-in-out infinite;
+}
+
+.hero-animate-bg {
+  background-size: 200% 200% !important;
+  animation: bg-shimmer 15s ease infinite !important;
+}
+
+/* Very subtle float for stat cards */
+.stat-card-float {
+  animation: float-alt 6s var(--ease) infinite;
+  animation-delay: inherit;
+}
+
