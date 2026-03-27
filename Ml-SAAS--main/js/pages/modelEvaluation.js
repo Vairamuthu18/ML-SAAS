@@ -148,6 +148,7 @@ export function renderModelEvaluation(container) {
       fittingTitle.style.color = "var(--accent-cyan)";
       fittingDesc.textContent = "Now the model is way too complex! It has memorized every noise point and will fail on new data.";
     }
+    ctx.stroke();
   }
 
   slider.oninput = draw;
