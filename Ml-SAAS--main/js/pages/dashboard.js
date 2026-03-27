@@ -10,7 +10,7 @@ export function renderDashboard(container) {
 
     <!-- Hero header -->
 
-    <div class="page-header" style="
+    <div class="page-header animate-fade-up" style="
       background: linear-gradient(135deg, rgba(0,255,157,0.08) 0%, rgba(212,212,216,0.04) 50%, transparent 100%);
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 20px;
@@ -66,7 +66,7 @@ export function renderDashboard(container) {
 
     <!-- Stat Cards -->
     <div class="dashboard-grid" style="margin-bottom:32px;">
-      <div class="glass-card stat-card">
+      <div class="glass-card stat-card animate-fade-up delay-1">
         <div class="stat-icon blue">📊</div>
         <div class="stat-content">
         <h4 class="stat-num" data-target="16">0</h4>
@@ -75,7 +75,7 @@ export function renderDashboard(container) {
         <div class="stat-trend up">+2 new</div>
       </div>
 
-      <div class="glass-card stat-card">
+      <div class="glass-card stat-card animate-fade-up delay-2">
         <div class="stat-icon emerald">🌎</div>
         <div class="stat-content">
           <h4 class="stat-num" data-target="9">0</h4>
@@ -84,7 +84,7 @@ export function renderDashboard(container) {
         <div class="stat-trend up">+1 new</div>
       </div>
 
-      <div class="glass-card stat-card">
+      <div class="glass-card stat-card animate-fade-up delay-3">
         <div class="stat-icon amber">⚡</div>
         <div class="stat-content">
           <h4 style="font-size:1.4rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:4px;">Real-Time</h4>
@@ -92,7 +92,7 @@ export function renderDashboard(container) {
         </div>
       </div>
 
-      <div class="glass-card stat-card">
+      <div class="glass-card stat-card animate-fade-up delay-4">
         <div class="stat-icon violet">💡</div>
         <div class="stat-content">
           <h4 style="font-size:1.4rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:4px;">Visual</h4>
@@ -103,7 +103,7 @@ export function renderDashboard(container) {
 
 
 
-    <div class="glass-card" style="margin-bottom:28px;padding:24px 28px; border-left: 4px solid var(--accent-emerald);">
+    <div class="glass-card animate-fade-up delay-5" style="margin-bottom:28px;padding:24px 28px; border-left: 4px solid var(--accent-emerald);">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">
         <div>
           <div style="font-size:0.95rem;font-weight:800;letter-spacing:-0.02em;">Your Progress</div>
@@ -151,7 +151,7 @@ export function renderDashboard(container) {
 
     <div class="lesson-grid">
 
-      <div class="glass-card lesson-card" data-page="foundations" data-level="beginner">
+      <div class="glass-card lesson-card animate-fade-up delay-6" data-page="foundations" data-level="beginner">
         <div class="lesson-card-preview" style="background:linear-gradient(135deg, rgba(6,182,212,0.18), rgba(212,212,216,0.12));">
           <canvas id="preview-foundations" width="320" height="148"></canvas>
         </div>
@@ -166,7 +166,7 @@ export function renderDashboard(container) {
         </div>
       </div>
 
-      <div class="glass-card lesson-card" data-page="data-basics" data-level="beginner">
+      <div class="glass-card lesson-card animate-fade-up delay-7" data-page="data-basics" data-level="beginner">
         <div class="lesson-card-preview" style="background:linear-gradient(135deg, rgba(0,255,157,0.15), rgba(212,212,216,0.12));">
           <canvas id="preview-data" width="320" height="148"></canvas>
         </div>
@@ -181,7 +181,7 @@ export function renderDashboard(container) {
         </div>
       </div>
 
-      <div class="glass-card lesson-card" data-page="data-preprocessing" data-level="beginner">
+      <div class="glass-card lesson-card animate-fade-up delay-8" data-page="data-preprocessing" data-level="beginner">
         <div class="lesson-card-preview" style="background:linear-gradient(135deg, rgba(236,72,153,0.15), rgba(212,212,216,0.12));">
           <canvas id="preview-preproc" width="320" height="148"></canvas>
         </div>
@@ -196,7 +196,7 @@ export function renderDashboard(container) {
         </div>
       </div>
 
-      <div class="glass-card lesson-card" data-page="model-evaluation" data-level="beginner">
+      <div class="glass-card lesson-card animate-fade-up delay-9" data-page="model-evaluation" data-level="beginner">
         <div class="lesson-card-preview" style="background:linear-gradient(135deg, rgba(6,182,212,0.15), rgba(212,212,216,0.12));">
           <canvas id="preview-eval" width="320" height="148"></canvas>
         </div>
@@ -211,7 +211,7 @@ export function renderDashboard(container) {
         </div>
       </div>
 
-      <div class="glass-card lesson-card" data-page="basic-math" data-level="beginner">
+      <div class="glass-card lesson-card animate-fade-up delay-10" data-page="basic-math" data-level="beginner">
         <div class="lesson-card-preview" style="background:linear-gradient(135deg, rgba(245,158,11,0.15), rgba(212,212,216,0.12));">
           <canvas id="preview-math" width="320" height="148"></canvas>
         </div>
@@ -226,7 +226,7 @@ export function renderDashboard(container) {
         </div>
       </div>
 
-      <div class="glass-card lesson-card" data-page="ml-workflow" data-level="beginner">
+      <div class="glass-card lesson-card animate-fade-up delay-11" data-page="ml-workflow" data-level="beginner">
         <div class="lesson-card-preview" style="background:linear-gradient(135deg, rgba(244,114,182,0.15), rgba(52,211,153,0.12));">
           <canvas id="preview-workflow" width="320" height="148"></canvas>
         </div>
@@ -241,7 +241,7 @@ export function renderDashboard(container) {
         </div>
       </div>
 
-      <div class="glass-card lesson-card" data-page="loss-function" data-level="beginner">
+      <div class="glass-card lesson-card animate-fade-up delay-12" data-page="loss-function" data-level="beginner">
         <div class="lesson-card-preview" style="background:linear-gradient(135deg, rgba(244,63,94,0.15), rgba(212,212,216,0.12));">
           <canvas id="preview-loss" width="320" height="148"></canvas>
         </div>
@@ -256,7 +256,7 @@ export function renderDashboard(container) {
         </div>
       </div>
 
-      <div class="glass-card lesson-card" data-page="gradient-descent" data-level="beginner">
+      <div class="glass-card lesson-card animate-fade-up delay-13" data-page="gradient-descent" data-level="beginner">
         <div class="lesson-card-preview" style="background:linear-gradient(135deg, rgba(245,158,11,0.15), rgba(212,212,216,0.12));">
           <canvas id="preview-gd" width="320" height="148"></canvas>
         </div>
@@ -271,7 +271,7 @@ export function renderDashboard(container) {
         </div>
       </div>
 
-      <div class="glass-card lesson-card" data-page="linear-regression" data-level="beginner">
+      <div class="glass-card lesson-card animate-fade-up delay-14" data-page="linear-regression" data-level="beginner">
         <div class="lesson-card-preview" style="background:linear-gradient(135deg, rgba(255,255,255,0.18), rgba(212,212,216,0.12));">
           <canvas id="preview-lr" width="320" height="148"></canvas>
         </div>
@@ -286,7 +286,7 @@ export function renderDashboard(container) {
         </div>
       </div>
 
-      <div class="glass-card lesson-card" data-page="logistic-regression" data-level="intermediate">
+      <div class="glass-card lesson-card animate-fade-up delay-15" data-page="logistic-regression" data-level="intermediate">
         <div class="lesson-card-preview" style="background:linear-gradient(135deg, rgba(6,182,212,0.15), rgba(212,212,216,0.12));">
           <canvas id="preview-logit" width="320" height="148"></canvas>
         </div>
@@ -301,7 +301,7 @@ export function renderDashboard(container) {
         </div>
       </div>
 
-      <div class="glass-card lesson-card" data-page="knn" data-level="beginner">
+      <div class="glass-card lesson-card animate-fade-up delay-16" data-page="knn" data-level="beginner">
         <div class="lesson-card-preview" style="background:linear-gradient(135deg, rgba(161,161,170,0.15), rgba(212,212,216,0.12));">
           <canvas id="preview-knn" width="320" height="148"></canvas>
         </div>
@@ -316,7 +316,7 @@ export function renderDashboard(container) {
         </div>
       </div>
 
-      <div class="glass-card lesson-card" data-page="model-metrics" data-level="intermediate">
+      <div class="glass-card lesson-card animate-fade-up delay-16" data-page="model-metrics" data-level="intermediate">
         <div class="lesson-card-preview" style="background:linear-gradient(135deg, rgba(34,197,94,0.15), rgba(212,212,216,0.12));">
           <canvas id="preview-metrics" width="320" height="148"></canvas>
         </div>
@@ -331,7 +331,7 @@ export function renderDashboard(container) {
         </div>
       </div>
 
-      <div class="glass-card lesson-card" data-page="k-means" data-level="beginner">
+      <div class="glass-card lesson-card animate-fade-up delay-16" data-page="k-means" data-level="beginner">
         <div class="lesson-card-preview" style="background:linear-gradient(135deg, rgba(161,161,170,0.18), rgba(6,182,212,0.12));">
           <canvas id="preview-km" width="320" height="148"></canvas>
         </div>
@@ -346,7 +346,7 @@ export function renderDashboard(container) {
         </div>
       </div>
 
-      <div class="glass-card lesson-card" data-page="decision-tree" data-level="intermediate">
+      <div class="glass-card lesson-card animate-fade-up delay-16" data-page="decision-tree" data-level="intermediate">
         <div class="lesson-card-preview" style="background:linear-gradient(135deg, rgba(245,158,11,0.18), rgba(244,63,94,0.12));">
           <canvas id="preview-dt" width="320" height="148"></canvas>
         </div>
@@ -361,7 +361,7 @@ export function renderDashboard(container) {
         </div>
       </div>
 
-      <div class="glass-card lesson-card" data-page="neural-network" data-level="advanced">
+      <div class="glass-card lesson-card animate-fade-up delay-16" data-page="neural-network" data-level="advanced">
         <div class="lesson-card-preview" style="background:linear-gradient(135deg, rgba(236,72,153,0.18), rgba(212,212,216,0.12));">
           <canvas id="preview-nn" width="320" height="148"></canvas>
         </div>
@@ -376,7 +376,7 @@ export function renderDashboard(container) {
         </div>
       </div>
 
-      <div class="glass-card lesson-card" data-page="svm" data-level="intermediate">
+      <div class="glass-card lesson-card animate-fade-up delay-16" data-page="svm" data-level="intermediate">
         <div class="lesson-card-preview" style="background:linear-gradient(135deg, rgba(6,182,212,0.18), rgba(255,255,255,0.12));">
           <canvas id="preview-svm" width="320" height="148"></canvas>
         </div>
