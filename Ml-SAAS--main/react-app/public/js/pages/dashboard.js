@@ -11,117 +11,115 @@ export function renderDashboard(container) {
     <!-- Hero header -->
 
     <div class="page-header" style="
-      background: linear-gradient(135deg, rgba(0,255,157,0.08) 0%, rgba(212,212,216,0.04) 50%, transparent 100%);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 20px;
-      padding: 36px 40px;
-      margin-bottom: 28px;
+      background: radial-gradient(circle at 0% 0%, rgba(16,185,129,0.05), transparent 50%),
+                  radial-gradient(circle at 100% 100%, rgba(16,185,129,0.03), transparent 50%),
+                  var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-xl);
+      padding: 48px 52px;
+      margin-bottom: 32px;
       position: relative;
       overflow: hidden;
+      box-shadow: var(--shadow-lg);
     ">
-      <!-- decorative orbs -->
+      <!-- subtle mesh overlay -->
       <div style="
-        position:absolute; top:-40px; right:-40px;
-        width:240px; height:240px;
-        background: radial-gradient(circle, rgba(0,255,157,0.15), transparent 70%);
-        border-radius:50%; pointer-events:none;
-      "></div>
-      <div style="
-        position:absolute; bottom:-30px; right:120px;
-        width:160px; height:160px;
-        background: radial-gradient(circle, rgba(0,255,157,0.1), transparent 70%);
-        border-radius:50%; pointer-events:none;
+        position:absolute; inset:0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        opacity: 0.02; pointer-events:none;
       "></div>
 
       <div class="page-eyebrow" style="
-        font-size:0.67rem; font-weight:700; color:var(--accent-emerald);
-        text-transform:uppercase; letter-spacing:0.14em;
-        display:flex; align-items:center; gap:8px; margin-bottom:12px;
+        font-size:0.7rem; font-weight:800; color:var(--accent-emerald);
+        text-transform:uppercase; letter-spacing:0.2em;
+        display:flex; align-items:center; gap:10px; margin-bottom:16px;
       ">
-        <span style="display:inline-block;width:24px;height:2px;background:var(--accent-emerald);border-radius:2px;"></span>
-        Welcome back, Learner 👋
+        <span style="display:inline-block;width:32px;height:1px;background:var(--accent-emerald);opacity:0.5;"></span>
+        Systems Online • Welcome back
       </div>
 
       <h2 style="
-        font-size:2.4rem; font-weight:800; letter-spacing:-0.04em;
-        margin-bottom:12px; line-height:1.1;
-        background: linear-gradient(120deg, #fff 30%, var(--accent-emerald) 100%);
+        font-size:3rem; font-weight:900; letter-spacing:-0.05em;
+        margin-bottom:16px; line-height:1;
+        background: linear-gradient(to right, #fff 20%, rgba(255,255,255,0.7) 100%);
         -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         background-clip: text;
       ">ML Visualization Lab</h2>
 
-      <p style="color:var(--text-secondary);font-size:0.98rem;line-height:1.7;max-width:540px;margin-bottom:26px;">
-        Learn machine learning through interactive visualizations. Pick an algorithm, adjust parameters, and watch the magic happen in real-time.
+      <p style="color:var(--text-secondary);font-size:1.05rem;line-height:1.6;max-width:580px;margin-bottom:32px;font-weight:450;">
+        Explore the mechanics of machine learning through high-fidelity interactive modules. Adjust parameters in real-time and master the algorithms.
       </p>
 
-      <div style="display:flex;gap:12px;flex-wrap:wrap;">
-        <button class="btn btn-primary btn-pill" onclick="window.__app.navigate('linear-regression')" style="padding: 10px 24px;">
-          🚀 Start Learning
+      <div style="display:flex;gap:16px;flex-wrap:wrap;">
+        <button class="btn btn-primary btn-pill" onclick="window.__app.navigate('linear-regression')" style="padding: 12px 32px; font-weight: 700; letter-spacing: -0.01em;">
+          Get Started
         </button>
-        <button class="btn btn-secondary btn-pill" onclick="window.__app.navigate('data-playground')" style="padding: 10px 24px;">
-          🔬 Open Playground
+        <button class="btn btn-secondary btn-pill" onclick="window.__app.navigate('data-playground')" style="padding: 12px 32px; font-weight: 600; background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.05);">
+          Data Playground
         </button>
       </div>
     </div>
 
     <!-- Stat Cards -->
-    <div class="dashboard-grid" style="margin-bottom:32px;">
-      <div class="glass-card stat-card">
-        <div class="stat-icon blue">📊</div>
+    <div class="dashboard-grid" style="margin-bottom:40px; gap: 20px;">
+      <div class="glass-card stat-card" style="padding: 28px;">
+        <div class="stat-icon" style="background: rgba(16,185,129,0.1); color: var(--accent-emerald); width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 20px;">📊</div>
         <div class="stat-content">
-        <h4 class="stat-num" data-target="16">0</h4>
-          <p>Interactive Modules</p>
-        </div>
-        <div class="stat-trend up">+2 new</div>
-      </div>
-
-      <div class="glass-card stat-card">
-        <div class="stat-icon emerald">🌎</div>
-        <div class="stat-content">
-          <h4 class="stat-num" data-target="9">0</h4>
-          <p>Sample Datasets</p>
-        </div>
-        <div class="stat-trend up">+1 new</div>
-      </div>
-
-      <div class="glass-card stat-card">
-        <div class="stat-icon amber">⚡</div>
-        <div class="stat-content">
-          <h4 style="font-size:1.4rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:4px;">Real-Time</h4>
-          <p>In-Browser Training</p>
+          <h4 class="stat-num" data-target="16" style="font-size: 1.8rem; font-weight: 850; letter-spacing: -0.04em; margin-bottom: 4px;">0</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); font-weight: 550; text-transform: uppercase; letter-spacing: 0.05em;">Interactive Modules</p>
         </div>
       </div>
 
-      <div class="glass-card stat-card">
-        <div class="stat-icon violet">💡</div>
+      <div class="glass-card stat-card" style="padding: 28px;">
+        <div class="stat-icon" style="background: rgba(16,185,129,0.1); color: var(--accent-emerald); width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 20px;">🌎</div>
         <div class="stat-content">
-          <h4 style="font-size:1.4rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:4px;">Visual</h4>
-          <p>Step-by-Step Explanations</p>
+          <h4 class="stat-num" data-target="9" style="font-size: 1.8rem; font-weight: 850; letter-spacing: -0.04em; margin-bottom: 4px;">0</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); font-weight: 550; text-transform: uppercase; letter-spacing: 0.05em;">Sample Datasets</p>
+        </div>
+      </div>
+
+      <div class="glass-card stat-card" style="padding: 28px;">
+        <div class="stat-icon" style="background: rgba(245,158,11,0.1); color: var(--accent-amber); width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 20px;">⚡</div>
+        <div class="stat-content">
+          <h4 style="font-size: 1.8rem; font-weight: 850; letter-spacing: -0.04em; margin-bottom: 4px;">Real-Time</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); font-weight: 550; text-transform: uppercase; letter-spacing: 0.05em;">Training Engine</p>
+        </div>
+      </div>
+
+      <div class="glass-card stat-card" style="padding: 28px;">
+        <div class="stat-icon" style="background: rgba(16,185,129,0.1); color: var(--accent-emerald); width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 20px;">💡</div>
+        <div class="stat-content">
+          <h4 style="font-size: 1.8rem; font-weight: 850; letter-spacing: -0.04em; margin-bottom: 4px;">Visual</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); font-weight: 550; text-transform: uppercase; letter-spacing: 0.05em;">First Learning</p>
         </div>
       </div>
     </div>
 
 
 
-    <div class="glass-card" style="margin-bottom:28px;padding:24px 28px; border-left: 4px solid var(--accent-emerald);">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">
+    <div class="glass-card" style="margin-bottom:40px; padding:32px; border-left: none; background: linear-gradient(to right, rgba(16,185,129,0.03), transparent);">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">
         <div>
-          <div style="font-size:0.95rem;font-weight:800;letter-spacing:-0.02em;">Your Progress</div>
-          <div style="font-size:0.78rem;color:var(--text-muted);margin-top:2px;">${completedCount} of 16 modules completed</div>
+          <div style="font-size:1.1rem;font-weight:800;letter-spacing:-0.03em; color: var(--text-primary);">Learning Progress</div>
+          <div style="font-size:0.85rem;color:var(--text-muted);margin-top:4px; font-weight: 500;">${completedCount} of 16 core modules mastered</div>
         </div>
-        <span class="tag tag-emerald" style="padding: 4px 12px; font-size: 0.75rem;">${progressPct}%</span>
+        <div style="text-align: right;">
+          <div style="font-size:1.4rem; font-weight: 900; color: var(--accent-emerald);">${progressPct}%</div>
+          <div style="font-size:0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 2px;">Completion</div>
+        </div>
       </div>
 
-      <div style="display:grid;grid-template-columns:repeat(16,1fr);gap:6px;">
+      <div style="display:grid;grid-template-columns:repeat(16,1fr);gap:8px;">
         ${['L1','L2','L3','L4','L5','L6','L7','L8','L9','L10','L11','L12','L13','L14','L15','L16'].map((mod, i) => {
           const lessonId = LESSON_ORDER[i];
           const isDone = completed.includes(lessonId);
-          const width = isDone ? '100%' : '0%';
+          const opacity = isDone ? '1' : '0.15';
+          const glow = isDone ? 'var(--shadow-glow)' : 'none';
           return `
-          <div title="${['Foundations','Data Basics','Preprocessing','Evaluation','Basic Math','ML Workflow','Loss','Gradient','Linear Reg','Logit Reg','KNN','Metrics','K-Means','Decision Trees','Neural Nets','SVM'][i]}">
-            <div style="font-size:0.6rem;color:var(--text-secondary);font-weight:600;margin-bottom:4px;text-align:center;">${mod}</div>
-            <div class="progress-bar" style="height: 5px; background: rgba(255,255,255,0.04); border-radius: 3px;">
-              <div class="progress-fill" style="width:${width};background:${['var(--accent-cyan)','var(--accent-emerald)','var(--accent-emerald)','var(--gradient-success)','var(--gradient-success)','var(--gradient-success)','var(--gradient-success)','var(--accent-amber)','var(--accent-amber)','var(--accent-amber)','var(--accent-emerald)','var(--accent-emerald)','var(--gradient-warm)','var(--gradient-warm)','linear-gradient(135deg,#34d399,#d4d4d8)','var(--gradient-cool)'][i]}"></div>
+          <div title="${['Foundations','Data Basics','Preprocessing','Evaluation','Basic Math','ML Workflow','Loss','Gradient','Linear Reg','Logit Reg','KNN','Metrics','K-Means','Decision Trees','Neural Nets','SVM'][i]}" style="cursor:help;">
+            <div style="font-size:0.6rem;color:var(--text-muted);font-weight:700;margin-bottom:6px;text-align:center;letter-spacing:0.05em;">${mod}</div>
+            <div style="height: 4px; background: rgba(255,255,255,0.05); border-radius: 2px; overflow:hidden;">
+              <div style="width:100%; height:100%; background:var(--accent-emerald); opacity:${opacity}; transition:all 0.6s var(--ease); box-shadow:${glow};"></div>
             </div>
           </div>
         `}).join('')}
@@ -152,7 +150,7 @@ export function renderDashboard(container) {
     <div class="lesson-grid">
 
       <div class="glass-card lesson-card" data-page="foundations" data-level="beginner">
-        <div class="lesson-card-preview" style="background:linear-gradient(135deg, rgba(6,182,212,0.18), rgba(212,212,216,0.12));">
+        <div class="lesson-card-preview">
           <canvas id="preview-foundations" width="320" height="148"></canvas>
         </div>
         <div class="lesson-card-body">
@@ -167,7 +165,7 @@ export function renderDashboard(container) {
       </div>
 
       <div class="glass-card lesson-card" data-page="data-basics" data-level="beginner">
-        <div class="lesson-card-preview" style="background:linear-gradient(135deg, rgba(0,255,157,0.15), rgba(212,212,216,0.12));">
+        <div class="lesson-card-preview">
           <canvas id="preview-data" width="320" height="148"></canvas>
         </div>
         <div class="lesson-card-body">
@@ -182,7 +180,7 @@ export function renderDashboard(container) {
       </div>
 
       <div class="glass-card lesson-card" data-page="data-preprocessing" data-level="beginner">
-        <div class="lesson-card-preview" style="background:linear-gradient(135deg, rgba(236,72,153,0.15), rgba(212,212,216,0.12));">
+        <div class="lesson-card-preview">
           <canvas id="preview-preproc" width="320" height="148"></canvas>
         </div>
         <div class="lesson-card-body">
@@ -197,7 +195,7 @@ export function renderDashboard(container) {
       </div>
 
       <div class="glass-card lesson-card" data-page="model-evaluation" data-level="beginner">
-        <div class="lesson-card-preview" style="background:linear-gradient(135deg, rgba(6,182,212,0.15), rgba(212,212,216,0.12));">
+        <div class="lesson-card-preview">
           <canvas id="preview-eval" width="320" height="148"></canvas>
         </div>
         <div class="lesson-card-body">
@@ -212,7 +210,7 @@ export function renderDashboard(container) {
       </div>
 
       <div class="glass-card lesson-card" data-page="basic-math" data-level="beginner">
-        <div class="lesson-card-preview" style="background:linear-gradient(135deg, rgba(245,158,11,0.15), rgba(212,212,216,0.12));">
+        <div class="lesson-card-preview">
           <canvas id="preview-math" width="320" height="148"></canvas>
         </div>
         <div class="lesson-card-body">
@@ -227,7 +225,7 @@ export function renderDashboard(container) {
       </div>
 
       <div class="glass-card lesson-card" data-page="ml-workflow" data-level="beginner">
-        <div class="lesson-card-preview" style="background:linear-gradient(135deg, rgba(244,114,182,0.15), rgba(52,211,153,0.12));">
+        <div class="lesson-card-preview">
           <canvas id="preview-workflow" width="320" height="148"></canvas>
         </div>
         <div class="lesson-card-body">
@@ -242,7 +240,7 @@ export function renderDashboard(container) {
       </div>
 
       <div class="glass-card lesson-card" data-page="loss-function" data-level="beginner">
-        <div class="lesson-card-preview" style="background:linear-gradient(135deg, rgba(244,63,94,0.15), rgba(212,212,216,0.12));">
+        <div class="lesson-card-preview">
           <canvas id="preview-loss" width="320" height="148"></canvas>
         </div>
         <div class="lesson-card-body">
@@ -257,7 +255,7 @@ export function renderDashboard(container) {
       </div>
 
       <div class="glass-card lesson-card" data-page="gradient-descent" data-level="beginner">
-        <div class="lesson-card-preview" style="background:linear-gradient(135deg, rgba(245,158,11,0.15), rgba(212,212,216,0.12));">
+        <div class="lesson-card-preview">
           <canvas id="preview-gd" width="320" height="148"></canvas>
         </div>
         <div class="lesson-card-body">
@@ -272,7 +270,7 @@ export function renderDashboard(container) {
       </div>
 
       <div class="glass-card lesson-card" data-page="linear-regression" data-level="beginner">
-        <div class="lesson-card-preview" style="background:linear-gradient(135deg, rgba(255,255,255,0.18), rgba(212,212,216,0.12));">
+        <div class="lesson-card-preview">
           <canvas id="preview-lr" width="320" height="148"></canvas>
         </div>
         <div class="lesson-card-body">
@@ -287,7 +285,7 @@ export function renderDashboard(container) {
       </div>
 
       <div class="glass-card lesson-card" data-page="logistic-regression" data-level="intermediate">
-        <div class="lesson-card-preview" style="background:linear-gradient(135deg, rgba(6,182,212,0.15), rgba(212,212,216,0.12));">
+        <div class="lesson-card-preview">
           <canvas id="preview-logit" width="320" height="148"></canvas>
         </div>
         <div class="lesson-card-body">
@@ -302,7 +300,7 @@ export function renderDashboard(container) {
       </div>
 
       <div class="glass-card lesson-card" data-page="knn" data-level="beginner">
-        <div class="lesson-card-preview" style="background:linear-gradient(135deg, rgba(161,161,170,0.15), rgba(212,212,216,0.12));">
+        <div class="lesson-card-preview">
           <canvas id="preview-knn" width="320" height="148"></canvas>
         </div>
         <div class="lesson-card-body">
@@ -317,7 +315,7 @@ export function renderDashboard(container) {
       </div>
 
       <div class="glass-card lesson-card" data-page="model-metrics" data-level="intermediate">
-        <div class="lesson-card-preview" style="background:linear-gradient(135deg, rgba(34,197,94,0.15), rgba(212,212,216,0.12));">
+        <div class="lesson-card-preview">
           <canvas id="preview-metrics" width="320" height="148"></canvas>
         </div>
         <div class="lesson-card-body">
@@ -332,7 +330,7 @@ export function renderDashboard(container) {
       </div>
 
       <div class="glass-card lesson-card" data-page="k-means" data-level="beginner">
-        <div class="lesson-card-preview" style="background:linear-gradient(135deg, rgba(161,161,170,0.18), rgba(6,182,212,0.12));">
+        <div class="lesson-card-preview">
           <canvas id="preview-km" width="320" height="148"></canvas>
         </div>
         <div class="lesson-card-body">
@@ -347,7 +345,7 @@ export function renderDashboard(container) {
       </div>
 
       <div class="glass-card lesson-card" data-page="decision-tree" data-level="intermediate">
-        <div class="lesson-card-preview" style="background:linear-gradient(135deg, rgba(245,158,11,0.18), rgba(244,63,94,0.12));">
+        <div class="lesson-card-preview">
           <canvas id="preview-dt" width="320" height="148"></canvas>
         </div>
         <div class="lesson-card-body">
@@ -362,7 +360,7 @@ export function renderDashboard(container) {
       </div>
 
       <div class="glass-card lesson-card" data-page="neural-network" data-level="advanced">
-        <div class="lesson-card-preview" style="background:linear-gradient(135deg, rgba(236,72,153,0.18), rgba(212,212,216,0.12));">
+        <div class="lesson-card-preview">
           <canvas id="preview-nn" width="320" height="148"></canvas>
         </div>
         <div class="lesson-card-body">
@@ -377,7 +375,7 @@ export function renderDashboard(container) {
       </div>
 
       <div class="glass-card lesson-card" data-page="svm" data-level="intermediate">
-        <div class="lesson-card-preview" style="background:linear-gradient(135deg, rgba(6,182,212,0.18), rgba(255,255,255,0.12));">
+        <div class="lesson-card-preview">
           <canvas id="preview-svm" width="320" height="148"></canvas>
         </div>
         <div class="lesson-card-body">
@@ -398,37 +396,21 @@ export function renderDashboard(container) {
     <!-- Info strip at bottom -->
 
     <div style="
-
-      margin-top:28px;
-
-      background: linear-gradient(135deg, rgba(161,161,170,0.06), rgba(6,182,212,0.04));
-
-      border: 1px solid rgba(161,161,170,0.12);
-
+      margin-top:48px;
+      background: linear-gradient(to right, rgba(16,185,129,0.03), transparent);
+      border: 1px solid var(--border-glass);
       border-radius: var(--radius-lg);
-
-      padding: 20px 24px;
-
-      display: flex; align-items: center; gap: 16px;
-
+      padding: 24px 32px;
+      display: flex; align-items: center; gap: 24px;
     ">
-
-      <div style="font-size:1.8rem;flex-shrink:0;">🎓</div>
-
+      <div style="font-size:2rem; background: rgba(255,255,255,0.03); width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">🎓</div>
       <div style="flex:1;">
-
-        <div style="font-size:0.88rem;font-weight:700;color:var(--text-primary);margin-bottom:3px;">Pro tip: Hands-on beats reading every time</div>
-
-        <div style="font-size:0.78rem;color:var(--text-muted);">Each module comes with live, editable visualizations. Change a parameter and see results instantly — no code required.</div>
-
+        <div style="font-size:1rem;font-weight:800;color:var(--text-primary);margin-bottom:4px;letter-spacing:-0.02em;">Hands-on beats reading every time</div>
+        <div style="font-size:0.85rem;color:var(--text-muted); line-height: 1.5; font-weight: 500;">Each module comes with live, editable visualizations. Adjust the parameters and witness the behavior instantly — no coding required.</div>
       </div>
-
-      <button class="btn btn-success btn-pill" onclick="window.__app.navigate('pricing')" style="flex-shrink:0;">
-
-        💎 Unlock Pro
-
+      <button class="btn btn-primary btn-pill" onclick="window.__app.navigate('pricing')" style="flex-shrink:0; padding: 12px 28px;">
+        Go Pro
       </button>
-
     </div>
 
   `;

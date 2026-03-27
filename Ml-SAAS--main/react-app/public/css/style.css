@@ -4,60 +4,59 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
-  /* Core palette â€” Sleek Monochrome */
-  --bg-primary:    #000000;
+  /* Core palette â€” Deep Obsidian & Slate */
+  --bg-primary:    #050505; /* Solid Obsidian */
   --bg-secondary:  #0a0a0a;
-  --bg-card:       #0a0a0a;
-  --bg-card-hover: #111111;
-  --bg-glass:      rgba(255,255,255,0.03);
-  --bg-glass-2:    rgba(255,255,255,0.06);
-  --border-glass:  rgba(255,255,255,0.1);
-  --border-subtle: rgba(255,255,255,0.05);
-  --border-active: rgba(255,255,255,0.25);
+  --bg-card:       #0c0c0c;
+  --bg-card-hover: #121212;
+  --bg-glass:      rgba(255,255,255,0.015);
+  --bg-glass-2:    rgba(255,255,255,0.04);
+  --border-glass:  rgba(255,255,255,0.06);
+  --border-subtle: rgba(255,255,255,0.03);
+  --border-active: rgba(255,255,255,0.15);
 
-  /* Accents — Vibrant Emerald */
-  --accent-blue:       #fafafa;
+  /* Accents — Sophisticated Emerald & Slate */
+  --accent-blue:       #f4f4f5;
   --accent-blue-light: #ffffff;
-  --accent-violet:     #d4d4d8;
-  --accent-emerald:    #00ff9d; /* More vibrant emerald */
-  --accent-emerald-glow: rgba(0, 255, 157, 0.4);
+  --accent-violet:     #52525b;
+  --accent-emerald:    #10b981; /* Professional emerald */
+  --accent-emerald-glow: rgba(16, 185, 129, 0.25);
   --accent-amber:      #f59e0b;
-  --accent-rose:       #ef4444;
-  --accent-cyan:       #71717a;
-  --accent-pink:       #a1a1aa;
+  --accent-rose:       #f43f5e;
+  --accent-cyan:       #3f3f46;
+  --accent-pink:       #71717a;
 
-  /* Gradients — Refined emerald */
-  --gradient-primary: linear-gradient(135deg, #00ff9d 0%, #00a063 100%);
-  --gradient-success: linear-gradient(180deg, #10b981, #047857);
-  --gradient-warm:    linear-gradient(180deg, #f59e0b, #b45309);
-  --gradient-cool:    linear-gradient(180deg, #fafafa, #e4e4e7);
+  /* Gradients — Ambient & Refined */
+  --gradient-primary: linear-gradient(135deg, #10b981 0%, #064e3b 100%);
+  --gradient-success: linear-gradient(180deg, #10b981, #065f46);
+  --gradient-warm:    linear-gradient(180deg, #f59e0b, #92400e);
+  --gradient-cool:    linear-gradient(180deg, #f4f4f5, #a1a1aa);
   --gradient-aurora:  var(--bg-secondary);
-  --gradient-bg:      transparent;
+  --gradient-bg:      radial-gradient(circle at 50% 10%, rgba(16, 185, 129, 0.04), transparent 80%);
 
   /* Text */
-  --text-primary:   #ededed;
+  --text-primary:   #fafafa;
   --text-secondary: #a1a1aa;
-  --text-muted:     #71717a;
-  --text-accent:    #fafafa;
+  --text-muted:     #52525b;
+  --text-accent:    #ffffff;
 
   /* Sizing */
-  --sidebar-width:  260px;
-  --topbar-height:  56px;
+  --sidebar-width:  280px; /* Slightly wider for modern feel */
+  --topbar-height:  64px;
   --radius-xs:  4px;
-  --radius-sm:  6px;
-  --radius-md:  8px;
-  --radius-lg:  12px;
-  --radius-xl:  16px;
-  --radius-2xl: 24px;
+  --radius-sm:  8px;
+  --radius-md:  12px;
+  --radius-lg:  16px;
+  --radius-xl:  24px;
+  --radius-2xl: 32px;
 
-  /* Shadows â€” Real shadows, not neon */
-  --shadow-xs:     0 1px 2px rgba(0,0,0,0.5);
-  --shadow-sm:     0 2px 4px rgba(0,0,0,0.6);
-  --shadow-md:     0 4px 12px rgba(0,0,0,0.8);
-  --shadow-lg:     0 8px 24px rgba(0,0,0,0.9);
-  --shadow-glow:   0 0 0 rgba(0,0,0,0);
-  --shadow-glow-lg:0 0 0 rgba(0,0,0,0);
-  --shadow-card:   0 1px 0 rgba(255,255,255,0.05) inset, 0 4px 6px rgba(0,0,0,1);
+  /* Shadows — Ambient Layered */
+  --shadow-xs:     0 1px 2px rgba(0,0,0,0.4);
+  --shadow-sm:     0 4px 6px -1px rgba(0,0,0,0.5);
+  --shadow-md:     0 12px 20px -8px rgba(0,0,0,0.8);
+  --shadow-lg:     0 25px 50px -12px rgba(0,0,0,0.9);
+  --shadow-glow:   0 0 20px var(--accent-emerald-glow);
+  --shadow-card:   0 1px 1px rgba(255,255,255,0.02) inset, 0 10px 15px -3px rgba(0,0,0,0.5);
 
   /* Transitions */
   --ease:       cubic-bezier(0.4, 0, 0.2, 1);
@@ -135,17 +134,19 @@ body {
 }
 
 .sidebar-brand-icon {
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   background: var(--gradient-primary);
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.35rem;
-  box-shadow: var(--shadow-glow), 0 4px 12px rgba(0,0,0,0.3);
+  font-size: 1.4rem;
+  font-weight: 900;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
   flex-shrink: 0;
   position: relative;
+  color: white;
 }
 
 .sidebar-brand-icon::after {
@@ -160,14 +161,11 @@ body {
 }
 
 .sidebar-brand h1 {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 800;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
   color: var(--text-primary);
-  
-  
-  
-  line-height: 1.2;
+  line-height: 1.1;
 }
 
 .sidebar-brand span {
@@ -463,15 +461,21 @@ body {
 /* â•â• Glass Cards â•â• */
 .glass-card {
   background: var(--bg-card);
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
   border: 1px solid var(--border-glass);
   border-radius: var(--radius-lg);
-  padding: 22px;
-  transition: all var(--duration-slow) var(--ease);
+  padding: 24px;
+  transition: all 0.3s var(--ease);
   box-shadow: var(--shadow-card);
   position: relative;
   overflow: hidden;
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent);
+  pointer-events: none;
 }
 
 
@@ -491,12 +495,12 @@ body {
 }
 
 .glass-card-header h3 {
-  font-size: 0.95rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 700;
   display: flex;
   align-items: center;
-  gap: 10px;
-  letter-spacing: -0.02em;
+  gap: 12px;
+  letter-spacing: -0.04em;
 }
 
 /* â•â• Section Headers â•â• */
@@ -546,15 +550,12 @@ body {
 }
 
 .page-header h2 {
-  font-size: 2rem;
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  margin-bottom: 12px;
-  line-height: 1.15;
+  font-size: 2.6rem;
+  font-weight: 850;
+  letter-spacing: -0.06em;
+  margin-bottom: 14px;
+  line-height: 1.05;
   color: var(--text-primary);
-  
-  
-  
 }
 
 .page-header p {
@@ -989,12 +990,14 @@ select:focus {
 }
 
 .lesson-card-preview {
-  height: 148px;
+  height: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.03), transparent);
+  border-bottom: 1px solid var(--border-glass);
 }
 
 .lesson-card-preview::after {
@@ -1024,9 +1027,9 @@ select:focus {
   margin-bottom: 10px;
 }
 
-.lesson-tag.beginner     { background: rgba(16,185,129,0.1);  color: var(--accent-emerald); border: 1px solid rgba(16,185,129,0.2); }
-.lesson-tag.intermediate { background: rgba(251,191,36,0.1);  color: var(--accent-amber);   border: 1px solid rgba(251,191,36,0.2); }
-.lesson-tag.advanced     { background: rgba(244,63,94,0.1);   color: var(--accent-rose);     border: 1px solid rgba(244,63,94,0.2); }
+.lesson-tag.beginner     { background: rgba(16,185,129,0.06);  color: var(--accent-emerald); border: 1px solid rgba(16,185,129,0.08); }
+.lesson-tag.intermediate { background: rgba(245,158,11,0.06);  color: var(--accent-amber);   border: 1px solid rgba(245,158,11,0.08); }
+.lesson-tag.advanced     { background: rgba(244,63,94,0.06);   color: var(--accent-rose);     border: 1px solid rgba(244,63,94,0.08); }
 
 .lesson-card-body h4 {
   font-size: 1.02rem;
@@ -1036,10 +1039,11 @@ select:focus {
 }
 
 .lesson-card-body p {
-  font-size: 0.79rem;
-  color: var(--text-muted);
+  font-size: 0.82rem;
+  color: var(--text-secondary);
   line-height: 1.6;
-  margin-bottom: 14px;
+  margin-bottom: 20px;
+  font-weight: 450;
 }
 
 .lesson-card-footer {
@@ -1057,18 +1061,20 @@ select:focus {
 }
 
 .lesson-card .lesson-cta {
-  font-size: 0.74rem;
-  padding: 6px 14px;
-  border-radius: 8px;
-  opacity: 0.8;
-  transition: all var(--duration) var(--ease);
+  font-size: 0.75rem;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-weight: 700;
+  background: var(--bg-glass);
+  color: var(--text-primary);
+  border: 1px solid var(--border-glass);
 }
 
 .lesson-card:hover .lesson-cta {
-  opacity: 1;
-  background: rgba(74,222,128,0.15);
-  border-color: rgba(74,222,128,0.3);
-  color: var(--text-primary);
+  background: var(--accent-emerald);
+  border-color: var(--accent-emerald);
+  color: white;
+  box-shadow: 0 4px 12px var(--accent-emerald-glow);
 }
 
 /* â•â• Tab System â•â• */
@@ -2379,7 +2385,6 @@ select:focus {
   .quiz-options {
     grid-template-columns: 1fr;
     margin-left: 0;
-  }
   }
 }
 
