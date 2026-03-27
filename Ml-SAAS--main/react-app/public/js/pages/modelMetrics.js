@@ -132,10 +132,10 @@ export function renderModelMetrics(container) {
     const fn = parseInt(document.getElementById('sl-fn').value);
     const tn = parseInt(document.getElementById('sl-tn').value);
 
-    // Update labels
+    const counts = { tp, fp, fn, tn };
     ['tp','fp','fn','tn'].forEach(id => {
-      document.getElementById(`sl-${id}-val`).textContent = eval(id);
-      document.getElementById(`cm-${id}-val`).textContent = eval(id);
+      document.getElementById(`sl-${id}-val`).textContent = counts[id];
+      document.getElementById(`cm-${id}-val`).textContent = counts[id];
     });
 
     const total = tp + fp + fn + tn;
