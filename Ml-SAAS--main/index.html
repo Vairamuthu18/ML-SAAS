@@ -1,152 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Viz Lab — Master Machine Learning Visually</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Modern reset & fonts */
+        body, html { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background-color: #0f172a; color: #f8fafc; overflow-x: hidden; }
+        
+        /* Navbar */
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 5%; position: absolute; top: 0; width: 90%; z-index: 100; }
+        .logo { font-size: 1.5rem; font-weight: 800; display: flex; align-items: center; gap: 0.5rem; letter-spacing: -0.5px; margin-left:15px; }
+        .logo-icon { width: 32px; height: 32px; background: linear-gradient(135deg, #6366f1, #a855f7); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        
+        .nav-links { display:flex; align-items:center; }
+        .nav-links a.link { color: #cbd5e1; text-decoration: none; margin-left: 2.5rem; font-weight: 500; transition: color 0.2s; }
+        .nav-links a.link:hover { color: #fff; }
+        
+        .btn-launch { background: #fff; color: #0f172a; padding: 0.6rem 1.25rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: transform 0.2s, box-shadow 0.2s; margin-left: 2.5rem;}
+        .btn-launch:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(255,255,255,0.2); }
 
-  <!-- SEO -->
-  <meta name="description" content="Learn machine learning through interactive visualizations. Watch algorithms train in real-time, understand gradient descent, and explore data.">
-  <meta name="keywords" content="machine learning, ML, visualization, interactive, learn ML, neural networks, decision trees, gradient descent">
-  <meta name="author" content="ML Viz Lab">
-  <meta name="robots" content="index, follow">
+        /* Hero Section */
+        .hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 1rem; overflow: hidden; }
+        
+        /* Ambient Background */
+        .ambient-glow { position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, rgba(15,23,42,0) 70%); top: 50%; left: 50%; transform: translate(-50%, -50%); border-radius: 50%; z-index: 0; pointer-events: none; }
+        .ambient-glow-2 { position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, rgba(168,85,247,0.15) 0%, rgba(15,23,42,0) 70%); top: 20%; right: 10%; border-radius: 50%; z-index: 0; pointer-events: none; }
 
-  <!-- Open Graph / Social Sharing -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="ML Viz Lab — Learn ML Through Visualization">
-  <meta property="og:description" content="Interactive ML learning platform. Watch algorithms train in real-time.">
-  <meta property="og:url" content="https://github.com/Vairamuthu18/ML-SAAS">
-  <meta property="og:site_name" content="ML Viz Lab">
+        .hero-content { position: relative; z-index: 10; max-width: 800px; margin-top:4rem;}
+        
+        .badge { background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.2); color: #818cf8; padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.875rem; font-weight: 600; display: inline-block; margin-bottom: 1.5rem; letter-spacing: 0.5px; text-transform: uppercase; }
+        
+        .hero h1 { font-size: 4.5rem; font-weight: 800; line-height: 1.1; letter-spacing: -1.5px; margin: 0 0 1.5rem 0; background: linear-gradient(to right, #ffffff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 1.25rem; color: #94a3b8; margin: 0 0 2.5rem 0; line-height: 1.6; max-width: 600px; margin-inline: auto; }
+        
+        .cta-group { display: flex; gap: 1rem; justify-content: center; }
+        
+        .btn-primary { background: linear-gradient(135deg, #6366f1, #8b5cf6); color: #fff; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.1rem; box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4); transition: transform 0.2s, box-shadow 0.2s; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.5); }
+        
+        .btn-secondary { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: background 0.2s; backdrop-filter: blur(10px); }
+        .btn-secondary:hover { background: rgba(255,255,255,0.1); }
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="ML Viz Lab — Learn ML Through Visualization">
-  <meta name="twitter:description" content="Interactive ML learning platform. Watch algorithms train in real-time.">
+        /* Dashboard Preview Mockup */
+        .mockup-container { margin-top: 4rem; position: relative; z-index: 10; perspective: 1000px; animation: float 6s ease-in-out infinite; }
+        .mockup { width: 900px; max-width: 90vw; height: 450px; background: rgba(15,23,42,0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); overflow: hidden; backdrop-filter: blur(20px); display: flex; flex-direction: column; }
+        .mockup-header { height: 40px; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; padding: 0 1rem; gap: 0.5rem; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; background: #475569; }
+        .dot:nth-child(1) { background: #ef4444; }
+        .dot:nth-child(2) { background: #eab308; }
+        .dot:nth-child(3) { background: #22c55e; }
+        .mockup-body { flex: 1; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" opacity="0.05"><path d="M0 0h40v40H0z" fill="none"/><path d="M0 39.5h40" stroke="%23fff" stroke-width="1"/><path d="M39.5 0v40" stroke="%23fff" stroke-width="1"/></svg>') repeat; position: relative; overflow:hidden;}
+        
+        /* Floating abstract elements representing AI */
+        .floating-node { position: absolute; width: 40px; height: 40px; background: rgba(99,102,241,0.2); border: 1px solid rgba(99,102,241,0.5); border-radius: 50%; flex-shrink: 0; box-shadow: 0 0 15px rgba(99,102,241,0.3); }
+        .node-1 { top: 30%; left: 20%; animation: pulse 3s infinite alternate; }
+        .node-2 { top: 60%; left: 50%; width: 60px; height: 60px; animation: pulse 4s infinite alternate-reverse; }
+        .node-3 { top: 40%; right: 20%; animation: pulse 3.5s infinite alternate; }
+        .connector { position: absolute; height: 2px; background: linear-gradient(90deg, rgba(99,102,241,0) 0%, rgba(99,102,241,0.5) 50%, rgba(99,102,241,0) 100%); top: 45%; left: 25%; width: 50%; transform: rotate(15deg); }
 
-  <!-- Content Security Policy -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self';">
-
-  <title>ML Viz Lab — Learn ML Through Visualization</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
-
-  <style>
-    /* Page loading spinner */
-    #page-loader {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 200px;
-    }
-    .spinner {
-      width: 36px; height: 36px;
-      border: 3px solid rgba(255,255,255,0.1);
-      border-top-color: var(--accent-blue, #6366f1);
-      border-radius: 50%;
-      animation: spin 0.7s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-  </style>
+        @keyframes float { 0% { transform: translateY(0px) rotateX(5deg); } 50% { transform: translateY(-20px) rotateX(2deg); } 100% { transform: translateY(0px) rotateX(5deg); } }
+        @keyframes pulse { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 20px rgba(99,102,241,0.6); } }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .nav-links a.link { display: none; }
+            .cta-group { flex-direction: column; }
+            .mockup { height: 300px; }
+        }
+    </style>
 </head>
 <body>
-  <div id="app">
-    <!-- Sidebar -->
-    <aside class="sidebar" role="navigation" aria-label="Main navigation">
-      <div class="sidebar-brand" aria-label="ML Viz Lab home">
-        <div class="sidebar-brand-icon" aria-hidden="true">M</div>
-        <div>
-          <h1>ML Viz Lab</h1>
-          <span>Visual Learning Platform</span>
+
+    <nav class="navbar">
+        <div class="logo">
+            <div class="logo-icon">M</div>
+            ML Viz Lab
         </div>
-      </div>
-
-      <div class="sidebar-section">
-        <div class="sidebar-section-title">Overview</div>
-        <ul class="sidebar-nav" role="list">
-          <li><a href="#" data-page="dashboard" class="active" aria-current="page"><span class="nav-icon" aria-hidden="true">🏠</span> Dashboard</a></li>
-        </ul>
-      </div>
-
-      <div class="sidebar-section">
-        <div class="sidebar-section-title">Course Modules</div>
-        <ul class="sidebar-nav" role="list">
-          <li><a href="#" data-page="foundations" aria-label="Lesson 1: Foundations"><span class="nav-icon" aria-hidden="true">🚀</span> Foundations <span class="badge">L1</span></a></li>
-          <li><a href="#" data-page="data-basics" aria-label="Lesson 2: Data Basics"><span class="nav-icon" aria-hidden="true">🧱</span> Data Basics <span class="badge">L2</span></a></li>
-          <li><a href="#" data-page="data-preprocessing" aria-label="Lesson 3: Data Preprocessing"><span class="nav-icon" aria-hidden="true">🧼</span> Data Preprocessing <span class="badge">L3</span></a></li>
-          <li><a href="#" data-page="model-evaluation" aria-label="Lesson 4: Model Evaluation"><span class="nav-icon" aria-hidden="true">⚖️</span> Model Evaluation <span class="badge">L4</span></a></li>
-          <li><a href="#" data-page="basic-math" aria-label="Lesson 5: Basic Mathematics"><span class="nav-icon" aria-hidden="true">🧮</span> Basic Mathematics <span class="badge">L5</span></a></li>
-          <li><a href="#" data-page="ml-workflow" aria-label="Lesson 6: ML Workflow"><span class="nav-icon" aria-hidden="true">⚙️</span> ML Workflow <span class="badge">L6</span></a></li>
-          <li><a href="#" data-page="loss-function" aria-label="Lesson 7: Loss Functions"><span class="nav-icon" aria-hidden="true">📉</span> Loss Functions <span class="badge">L7</span></a></li>
-          <li><a href="#" data-page="gradient-descent" aria-label="Lesson 8: Gradient Descent"><span class="nav-icon" aria-hidden="true">🏂</span> Gradient Descent <span class="badge">L8</span></a></li>
-          <li><a href="#" data-page="linear-regression" aria-label="Lesson 9: Linear Regression"><span class="nav-icon" aria-hidden="true">📏</span> Linear Regression <span class="badge">L9</span></a></li>
-          <li><a href="#" data-page="logistic-regression" aria-label="Lesson 10: Logistic Regression"><span class="nav-icon" aria-hidden="true">🔀</span> Logistic Regression <span class="badge">L10</span></a></li>
-          <li><a href="#" data-page="knn" aria-label="Lesson 11: K-Nearest Neighbors"><span class="nav-icon" aria-hidden="true">🏘️</span> K-Nearest Neighbors <span class="badge">L11</span></a></li>
-          <li><a href="#" data-page="model-metrics" aria-label="Lesson 12: Model Metrics"><span class="nav-icon" aria-hidden="true">🎯</span> Model Metrics <span class="badge">L12</span></a></li>
-          <li><a href="#" data-page="k-means" aria-label="Lesson 13: K-Means Clustering"><span class="nav-icon" aria-hidden="true">🪐</span> K-Means Clustering <span class="badge">L13</span></a></li>
-          <li><a href="#" data-page="decision-tree" aria-label="Lesson 14: Decision Trees"><span class="nav-icon" aria-hidden="true">🌳</span> Decision Trees <span class="badge">L14</span></a></li>
-          <li><a href="#" data-page="neural-network" aria-label="Lesson 15: Neural Networks"><span class="nav-icon" aria-hidden="true">🧠</span> Neural Networks <span class="badge">L15</span></a></li>
-          <li><a href="#" data-page="svm" aria-label="Lesson 16: Support Vector Machines"><span class="nav-icon" aria-hidden="true">🛣️</span> SVM <span class="badge">L16</span></a></li>
-        </ul>
-      </div>
-
-      <div class="sidebar-section">
-        <div class="sidebar-section-title">Tools</div>
-        <ul class="sidebar-nav" role="list">
-          <li><a href="#" data-page="data-playground" aria-label="Data Playground"><span class="nav-icon" aria-hidden="true">🔬</span> Data Playground</a></li>
-          <li><a href="#" data-page="explainers" aria-label="Why Did This Happen? Explainers"><span class="nav-icon" aria-hidden="true">💡</span> Why Did This Happen?</a></li>
-        </ul>
-      </div>
-
-      <div class="sidebar-section">
-        <div class="sidebar-section-title">Account</div>
-        <ul class="sidebar-nav" role="list">
-          <li><a href="#" data-page="pricing" aria-label="Pricing plans"><span class="nav-icon" aria-hidden="true">💎</span> Pricing <span class="badge pro">PRO</span></a></li>
-          <li><a href="#" data-page="login" aria-label="Login or sign up"><span class="nav-icon" aria-hidden="true">👤</span> Login / Signup</a></li>
-        </ul>
-      </div>
-
-      <!-- Bottom user capsule -->
-      <div class="sidebar-user" id="sidebar-user-capsule" aria-label="User account info">
-        <div class="sidebar-user-avatar" id="user-avatar-initials">ML</div>
-        <div class="sidebar-user-info">
-          <div class="sidebar-user-name" id="sidebar-user-name">Guest Learner</div>
-          <div class="sidebar-user-role" id="sidebar-user-role">Free Plan · <span style="color:var(--accent-emerald)">Active</span></div>
+        <div class="nav-links">
+            <a href="#" class="link">Features</a>
+            <a href="#" class="link">Modules</a>
+            <a href="app.html" class="link">Sign In</a>
+            <a href="app.html" class="btn-launch">Launch App</a>
         </div>
-      </div>
-    </aside>
+    </nav>
 
-    <!-- Main -->
-    <div class="main-content" role="main">
-      <!-- Topbar -->
-      <header class="topbar" role="banner">
-        <div class="topbar-left">
-          <button class="topbar-btn" id="menu-toggle" aria-label="Toggle sidebar menu" aria-expanded="false">☰</button>
-          <nav class="topbar-breadcrumb" id="breadcrumb" aria-label="Breadcrumb">
-            Home <span style="color:var(--text-muted);margin:0 5px" aria-hidden="true">›</span> <strong>Dashboard</strong>
-          </nav>
+    <section class="hero">
+        <div class="ambient-glow"></div>
+        <div class="ambient-glow-2"></div>
+        
+        <div class="hero-content">
+            <div class="badge">Version 1.0 is Live</div>
+            <h1>Stop Memorizing Math.<br>Start <span style="background: linear-gradient(to right, #818cf8, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Seeing</span> Algorithms.</h1>
+            <p>An interactive educational platform that teaches Machine Learning through real-time visualizations, interactive playgrounds, and deep explainers.</p>
+            
+            <div class="cta-group">
+                <a href="app.html" class="btn-primary">
+                    Start Learning Free
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#" class="btn-secondary">Explore Curriculum</a>
+            </div>
         </div>
-        <div class="topbar-right">
-          <div class="topbar-search" role="search">
-            <span class="topbar-search-icon" aria-hidden="true">🔍</span>
-            <input type="search" placeholder="Search modules..." id="topbar-search-input" aria-label="Search modules">
-          </div>
-          <div class="topbar-divider" aria-hidden="true"></div>
-          <button class="topbar-btn" id="notif-btn" title="Notifications" aria-label="Notifications">
-            🔔
-            <span class="notif-dot" aria-hidden="true"></span>
-          </button>
-          <button class="topbar-btn" id="settings-btn" title="Settings" aria-label="Settings">⚙️</button>
-          <div class="user-avatar" id="topbar-user-avatar" title="Profile" aria-label="User profile" role="button" tabindex="0">ML</div>
+
+        <div class="mockup-container">
+            <div class="mockup">
+                <div class="mockup-header">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div style="margin-left:auto;font-size:12px;color:rgba(255,255,255,0.3);letter-spacing:1px;font-family:monospace;">app.html</div>
+                </div>
+                <div class="mockup-body">
+                    <!-- Abstract representation of the neural network visualization -->
+                    <div class="connector"></div>
+                    <div class="floating-node node-1"></div>
+                    <div class="floating-node node-2"></div>
+                    <div class="floating-node node-3"></div>
+                    <div style="position:absolute; bottom:20px; left:20px; right:20px; height:60px; background:rgba(255,255,255,0.05); border-radius:8px; display:flex; align-items:center; padding:0 20px; gap:15px; border: 1px solid rgba(255,255,255,0.05);">
+                        <div style="width:100px; height:8px; background:rgba(99,102,241,0.5); border-radius:4px;"></div>
+                        <div style="width:200px; height:8px; background:rgba(255,255,255,0.1); border-radius:4px;"></div>
+                        <div style="margin-left:auto; width:40px; height:20px; background:rgba(34,197,94,0.2); border:1px solid rgba(34,197,94,0.4); border-radius:4px; display:flex; align-items:center; justify-content:center; font-size:10px; color:#4ade80; font-weight:bold;">98%</div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </header>
+    </section>
 
-      <!-- Page Content -->
-      <div id="page-content" class="page-content" aria-live="polite" aria-label="Page content"></div>
-    </div>
-  </div>
-
-  <script type="module">
-    import { navigate } from './js/app.js';
-    window.__app = { navigate };
-  </script>
 </body>
 </html>

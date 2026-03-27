@@ -7,12 +7,6 @@
       "use": "@vercel/static"
     }
   ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/Ml-SAAS--main/index.html"
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
