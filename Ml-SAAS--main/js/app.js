@@ -132,7 +132,12 @@ function updateBreadcrumb() {
   const route = routes[currentPage];
   if (bc && route) {
     let html = route.breadcrumb.replace(/→/g, '<span style="color:var(--text-muted);margin:0 6px" aria-hidden="true">›</span>');
+    // Make Home link back to the landing page
     html = html.replace(/^Home/, '<a href="/" style="color:inherit;text-decoration:none;" class="hover-link">Home</a>');
+    // Make app categories link back to the dashboard
+    html = html.replace(/(Course|Algorithms|Learn|Tools)/g, (match) => {
+      return `<a href="#" onclick="window.__app.navigate('dashboard');return false;" style="color:inherit;text-decoration:none;" class="hover-link">${match}</a>`;
+    });
     bc.innerHTML = html;
   }
 }
