@@ -115,8 +115,8 @@ export function renderModelEvaluation(container) {
     if (complexity < 20) {
       // Underfit: Just a straight line
       ctx.strokeStyle = '#f59e0b';
-      ctx.moveTo(points[0].x, canvas.height/2);
-      ctx.lineTo(points[points.length-1].x, canvas.height/2);
+      ctx.moveTo(points[0].x, points[0].y);
+      ctx.lineTo(points[points.length-1].x, points[points.length-1].y);
       complexityVal.textContent = "Very Simple";
       fittingTitle.textContent = "Underfitting";
       fittingTitle.style.color = "var(--accent-amber)";
