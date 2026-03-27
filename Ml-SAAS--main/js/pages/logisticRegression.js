@@ -181,7 +181,7 @@ export function renderLogisticRegression(container) {
 
     // Ball on curve
     ctx.beginPath(); ctx.arc(toX(z), toY(pz), 7, 0, Math.PI * 2);
-    ctx.fillStyle = 'var(--accent-amber)'; ctx.fill();
+    ctx.fillStyle = '#f59e0b'; ctx.fill();
     ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; ctx.stroke();
   }
 

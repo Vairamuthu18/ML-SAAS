@@ -342,7 +342,7 @@ export function renderExplainers(container) {
 
     // Legend
 
-    lctx.fillStyle='#ffffff';lctx.fillRect(LW-100,LH-30,12,3);lctx.fillStyle='var(--text-muted)';lctx.font='10px Inter';lctx.fillText('Train',LW-85,LH-26);
+    lctx.fillStyle='#ffffff';lctx.fillRect(LW-100,LH-30,12,3);lctx.fillStyle='#71717a';lctx.font='10px Inter';lctx.fillText('Train',LW-85,LH-26);
 
     lctx.fillStyle='#f43f5e';lctx.fillRect(LW-100,LH-20,12,3);lctx.fillText('Validation',LW-85,LH-16);
 

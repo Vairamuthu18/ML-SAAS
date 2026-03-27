@@ -114,7 +114,7 @@ export function renderModelEvaluation(container) {
     
     if (complexity < 20) {
       // Underfit: Just a straight line
-      ctx.strokeStyle = 'var(--accent-amber)';
+      ctx.strokeStyle = '#f59e0b';
       ctx.moveTo(points[0].x, canvas.height/2);
       ctx.lineTo(points[points.length-1].x, canvas.height/2);
       complexityVal.textContent = "Very Simple";
@@ -123,7 +123,7 @@ export function renderModelEvaluation(container) {
       fittingDesc.textContent = "The model is too rigid. It's missing the general shape of the data.";
     } else if (complexity < 70) {
       // Good Fit: Smooth spline
-      ctx.strokeStyle = 'var(--accent-emerald)';
+      ctx.strokeStyle = '#10b981';
       ctx.moveTo(points[0].x, points[0].y);
       for (let i = 1; i < points.length; i++) {
         const xc = (points[i].x + points[i-1].x) / 2;
@@ -137,7 +137,7 @@ export function renderModelEvaluation(container) {
       fittingDesc.textContent = "This is the 'Sweet Spot'. The model follows the pattern but ignores the tiny noise jumps.";
     } else {
       // Overfit: Wiggly line going through EVERY point
-      ctx.strokeStyle = 'var(--accent-cyan)';
+      ctx.strokeStyle = '#06b6d4';
       ctx.moveTo(points[0].x, points[0].y);
       for (let i = 1; i < points.length; i++) {
         const wiggle = (complexity - 70) * (Math.random() - 0.5) * 2; // Add noise

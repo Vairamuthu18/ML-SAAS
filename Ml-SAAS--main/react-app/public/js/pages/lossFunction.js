@@ -211,7 +211,7 @@ export function renderLossFunction(container) {
       ctx.arc(toX(x), toY(y), 5, 0, Math.PI * 2);
       ctx.fillStyle = 'rgba(255,255,255,0.85)';
       ctx.fill();
-      ctx.strokeStyle = 'var(--accent-cyan)';
+      ctx.strokeStyle = '#06b6d4';
       ctx.lineWidth = 1.5;
       ctx.stroke();
     });

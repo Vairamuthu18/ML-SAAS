@@ -185,7 +185,7 @@ export function renderGradientDescent(container) {
     ctx.lineTo(toCanvasX(5), toCanvasY(lossFunc(5)));
     ctx.stroke();
     ctx.setLineDash([]);
-    ctx.fillStyle = 'var(--accent-emerald)';
+    ctx.fillStyle = '#10b981';
     ctx.font = 'bold 10px Inter, sans-serif';
     ctx.fillText('⭐ Minimum', toCanvasX(5) + 6, toCanvasY(lossFunc(5)) - 6);
 
@@ -233,7 +233,7 @@ export function renderGradientDescent(container) {
       // Ball
       ctx.beginPath();
       ctx.arc(toCanvasX(ballX), toCanvasY(ballY), 8, 0, Math.PI * 2);
-      ctx.fillStyle = 'var(--accent-emerald)';
+      ctx.fillStyle = '#10b981';
       ctx.fill();
       ctx.strokeStyle = '#fff';
       ctx.lineWidth = 2;

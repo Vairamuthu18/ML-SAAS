@@ -175,7 +175,7 @@ export function renderKNN(container) {
     // Mystery point
     if (mystery) {
       ctx.beginPath(); ctx.arc(mystery.x*W, mystery.y*H, 10, 0, Math.PI*2);
-      ctx.fillStyle = 'var(--accent-amber)'; ctx.fill();
+      ctx.fillStyle = '#f59e0b'; ctx.fill();
       ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; ctx.stroke();
       ctx.fillStyle = '#000'; ctx.font = 'bold 9px Inter,sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       ctx.fillText('?', mystery.x*W, mystery.y*H);
