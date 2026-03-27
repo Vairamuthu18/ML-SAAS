@@ -113,40 +113,57 @@ export function renderModelEvaluation(container) {
     ctx.lineWidth = 3;
     
     if (complexity < 20) {
-      // Underfit: Just a straight line
+      // Underfit: Proper Linear Regression (Best Fit Straight Line)
       ctx.strokeStyle = '#f59e0b';
-      ctx.moveTo(points[0].x, points[0].y);
-      ctx.lineTo(points[points.length-1].x, points[points.length-1].y);
+      const n = points.length;
+      let sumX = 0, sumY = 0, sumXY = 0, sumX2 = 0;
+      points.forEach(p => {
+        sumX += p.x;
+        sumY += p.y;
+        sumXY += p.x * p.y;
+        sumX2 += p.x * p.x;
+      });
+      const slope = (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX);
+      const intercept = (sumY - slope * sumX) / n;
+
+      const p1 = points[0];
+      const p2 = points[n-1];
+      ctx.moveTo(p1.x, slope * p1.x + intercept);
+      ctx.lineTo(p2.x, slope * p2.x + intercept);
+      
       complexityVal.textContent = "Very Simple";
       fittingTitle.textContent = "Underfitting";
       fittingTitle.style.color = "var(--accent-amber)";
-      fittingDesc.textContent = "The model is too rigid. It's missing the general shape of the data.";
+      fittingDesc.textContent = "The model is too simple. It captures the general direction but misses all the important peaks and valleys.";
     } else if (complexity < 70) {
-      // Good Fit: Smooth spline
+      // Good Fit: Smooth spline that follows the wave
       ctx.strokeStyle = '#10b981';
       ctx.moveTo(points[0].x, points[0].y);
       for (let i = 1; i < points.length; i++) {
         const xc = (points[i].x + points[i-1].x) / 2;
         const yc = (points[i].y + points[i-1].y) / 2;
-        const shiftY = Math.sin(xc * 0.01) * (complexity/2); // Dynamic smoothness
+        // Use midpoint as end, and point as control point
         ctx.quadraticCurveTo(points[i-1].x, points[i-1].y, xc, yc);
       }
+      // Line to the last point
+      ctx.lineTo(points[points.length-1].x, points[points.length-1].y);
+      
       complexityVal.textContent = "Good Fit";
       fittingTitle.textContent = "Perfect Balance";
       fittingTitle.style.color = "var(--accent-emerald)";
       fittingDesc.textContent = "This is the 'Sweet Spot'. The model follows the pattern but ignores the tiny noise jumps.";
     } else {
-      // Overfit: Wiggly line going through EVERY point
+      // Overfit: Jagged line hitting EVERY point exactly
       ctx.strokeStyle = '#06b6d4';
       ctx.moveTo(points[0].x, points[0].y);
       for (let i = 1; i < points.length; i++) {
-        const wiggle = (complexity - 70) * (Math.random() - 0.5) * 2; // Add noise
+        const wiggle = (complexity - 70) * (Math.random() - 0.5) * 2.5; 
         ctx.lineTo(points[i].x, points[i].y + wiggle);
       }
       complexityVal.textContent = "Complex";
       fittingTitle.textContent = "Overfitting";
       fittingTitle.style.color = "var(--accent-cyan)";
-      fittingDesc.textContent = "Now the model is way too complex! It has memorized every noise point and will fail on new data.";
+      fittingDesc.textContent = "The model is way too complex! It has memorized every noise spike and will fail on new data.";
     }
     ctx.stroke();
   }
