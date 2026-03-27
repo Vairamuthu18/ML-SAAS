@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn machine learning through interactive visualizations. Watch algorithms train in real-time, understand gradient descent, and explore data.">
+  <title>ML Viz Lab — Learn ML Through Visualization</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+</head>
+<body>
+  <div id="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="sidebar-brand-icon">M</div>
+        <div>
+          <h1>ML Viz Lab</h1>
+          <span>Visual Learning Platform</span>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Overview</div>
+        <ul class="sidebar-nav">
+          <li><a href="#" data-page="dashboard" class="active"><span class="nav-icon">🏠</span> Dashboard</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Course Modules</div>
+        <ul class="sidebar-nav">
+          <li><a href="#" data-page="foundations"><span class="nav-icon">🚀</span> Foundations <span class="badge">L1</span></a></li>
+          <li><a href="#" data-page="data-basics"><span class="nav-icon">🧱</span> Data Basics <span class="badge">L2</span></a></li>
+          <li><a href="#" data-page="data-preprocessing"><span class="nav-icon">🧼</span> Data Preprocessing <span class="badge">L3</span></a></li>
+          <li><a href="#" data-page="model-evaluation"><span class="nav-icon">⚖️</span> Model Evaluation <span class="badge">L4</span></a></li>
+          <li><a href="#" data-page="basic-math"><span class="nav-icon">🧮</span> Basic Mathematics <span class="badge">L5</span></a></li>
+          <li><a href="#" data-page="ml-workflow"><span class="nav-icon">⚙️</span> ML Workflow <span class="badge">L6</span></a></li>
+          <li><a href="#" data-page="loss-function"><span class="nav-icon">📉</span> Loss Functions <span class="badge">L7</span></a></li>
+          <li><a href="#" data-page="gradient-descent"><span class="nav-icon">🏂</span> Gradient Descent <span class="badge">L8</span></a></li>
+          <li><a href="#" data-page="linear-regression"><span class="nav-icon">📏</span> Linear Regression <span class="badge">L9</span></a></li>
+          <li><a href="#" data-page="logistic-regression"><span class="nav-icon">🔀</span> Logistic Regression <span class="badge">L10</span></a></li>
+          <li><a href="#" data-page="knn"><span class="nav-icon">🏘️</span> K-Nearest Neighbors <span class="badge">L11</span></a></li>
+          <li><a href="#" data-page="model-metrics"><span class="nav-icon">🎯</span> Model Metrics <span class="badge">L12</span></a></li>
+          <li><a href="#" data-page="k-means"><span class="nav-icon">🪐</span> K-Means Clustering <span class="badge">L13</span></a></li>
+          <li><a href="#" data-page="decision-tree"><span class="nav-icon">🌳</span> Decision Trees <span class="badge">L14</span></a></li>
+          <li><a href="#" data-page="neural-network"><span class="nav-icon">🧠</span> Neural Networks <span class="badge">L15</span></a></li>
+          <li><a href="#" data-page="svm"><span class="nav-icon">🛣️</span> SVM <span class="badge">L16</span></a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Tools</div>
+        <ul class="sidebar-nav">
+          <li><a href="#" data-page="data-playground"><span class="nav-icon">🔬</span> Data Playground</a></li>
+          <li><a href="#" data-page="explainers"><span class="nav-icon">💡</span> Why Did This Happen?</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Account</div>
+        <ul class="sidebar-nav">
+          <li><a href="#" data-page="pricing"><span class="nav-icon">💎</span> Pricing <span class="badge pro">PRO</span></a></li>
+          <li><a href="#" data-page="login"><span class="nav-icon">👤</span> Login / Signup</a></li>
+        </ul>
+      </div>
+
+      <!-- Bottom user capsule -->
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar">ML</div>
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-name">Guest Learner</div>
+          <div class="sidebar-user-role">Free Plan · <span style="color:var(--accent-emerald)">Active</span></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <div class="main-content">
+      <!-- Topbar -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="topbar-btn" id="menu-toggle" aria-label="Menu">☰</button>
+          <div class="topbar-breadcrumb" id="breadcrumb">
+            Home <span style="color:var(--text-muted);margin:0 5px">›</span> <strong>Dashboard</strong>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <div class="topbar-search">
+            <span class="topbar-search-icon">🔍</span>
+            <input type="text" placeholder="Search modules..." id="topbar-search-input">
+          </div>
+          <div class="topbar-divider"></div>
+          <button class="topbar-btn" title="Notifications">
+            🔔
+            <span class="notif-dot"></span>
+          </button>
+          <button class="topbar-btn" title="Settings">⚙️</button>
+          <div class="user-avatar" title="Profile">ML</div>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <div id="page-content" class="page-content"></div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { navigate } from './js/app.js';
+    window.__app = { navigate };
+  </script>
+</body>
+</html>
